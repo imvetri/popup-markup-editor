@@ -8,4 +8,8 @@
     left: 50px;
     height: 300px;
     width: 300px;
+    background: darkgrey;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 10px;
 }
