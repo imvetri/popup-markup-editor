@@ -51,6 +51,12 @@ class Index extends Component {
         })
     }
 
+    updateStyle (event) {
+        this.setState({
+            style: event.currentTarget.value
+        })
+    }
+
     render(){
         return (
             <div className = {style.showBackground}>
@@ -62,6 +68,7 @@ class Index extends Component {
                     close = {this.close.bind(this)}
                     updateName = {this.updateName.bind(this)}
                     updateMarkup = {this.updateMarkup.bind(this)}
+                    updateStyle = {this.updateStyle.bind(this)}
                     />
             </div>
         );
