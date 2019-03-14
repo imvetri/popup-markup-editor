@@ -17,9 +17,12 @@ class Index extends Component {
         super(props);
         this.state = {
             createMode : true,
-            markup:"",
             show:true,
-            name: ""
+            name: "",
+            markup:"",
+            styleClass: "",
+            style: "",
+            state: ""
         }
     }
 
@@ -57,6 +60,18 @@ class Index extends Component {
         })
     }
 
+    updateStyleClass (event) {
+        this.setState({
+            styleClass: event.currentTarget.value
+        })
+    }
+
+    updateState (event) {
+        this.setState({
+            state: event.currentTarget.value
+        })
+    }
+
     render(){
         return (
             <div className = {style.showBackground}>
@@ -64,11 +79,16 @@ class Index extends Component {
                     show = {this.state.show} 
                     name = {this.state.name} 
                     markup = {this.state.markup} 
+                    styleClass = {this.state.styleClass}
+                    style = {this.state.style}
+                    state = {this.state.state}
                     save = {this.save.bind(this)} 
                     close = {this.close.bind(this)}
                     updateName = {this.updateName.bind(this)}
                     updateMarkup = {this.updateMarkup.bind(this)}
                     updateStyle = {this.updateStyle.bind(this)}
+                    updateStyleClass = {this.updateStyleClass.bind(this)}
+                    updateState = {this.updateState.bind(this)}
                     />
             </div>
         );
