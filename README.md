@@ -1,3 +1,12 @@
 # popup-markup-editor
 
-Todo, Move npm publish code to src and rest to demo folder.
+Shows 
+    element name
+    element markup
+    element styles
+
+Dispatches
+    on change of name?
+    on change of markup
+    on change of style
+    on selection of tag

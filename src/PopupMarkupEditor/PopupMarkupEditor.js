@@ -23,8 +23,9 @@ class PopupMarkupEditor extends Component {
 
     render() {
 
+        // Have a practice of handling only negative case. means, if 4 variables are required, and used without if, add an if. universal law daw.
         return (
-            <div className={this.props.show ? '' : style.hidden} >
+            <div draggable="true"  className={(this.props.show ? '' : style.hidden)+" resizable"} >
                 <section className={style.override}>
                     <h4>Name:</h4>
                     <input type="text" placeholder="Enter element name" value={this.props.name} onChange={this.props.updateName}/>
@@ -32,8 +33,12 @@ class PopupMarkupEditor extends Component {
                     <button onClick={this.props.close}>Close</button>
                     <h4>Markup:</h4>
                     <textarea value={this.props.markup} onChange={this.props.updateMarkup} />
+                    <h4>Style by class:</h4>
+                    <textarea value={this.props.styleClass} onChange={this.props.updateStyleClass} />
                     <h4>Style:</h4>
                     <textarea value={this.props.style} onChange={this.props.updateStyle} />
+                    <h4>State:</h4>
+                    <textarea value={this.props.state} onChange={this.props.updateState} />
                 </section>
             </div>
         );

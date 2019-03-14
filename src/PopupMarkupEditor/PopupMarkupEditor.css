@@ -5,11 +5,11 @@
 .override {
     position: absolute;
     top: 50px;
-    left: 50px;
-    height: 300px;
-    width: 300px;
+    right: 50px;
+    /* height: 40vmax;  I'm that guy who used to think, "is this right?", but the guy right now is not that person, & I still am. What more motivation do you need?"
+    width: 300px; */
     background: darkgrey;
     border: 1px solid black;
     border-radius: 7px;
-    padding: 10px;
+    padding: 4px;
 }
