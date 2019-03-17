@@ -23,7 +23,7 @@ class PopupMarkupEditor extends Component {
 
     render() {
 
-        // Have a practice of handling only negative case. means, if 4 variables are required, and used without if, add an if. universal law daw.
+        // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div draggable="true"  className={(this.props.show ? '' : style.hidden)+" resizable"} >
                 <section className={style.override}>
