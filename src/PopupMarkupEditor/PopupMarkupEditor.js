@@ -13,32 +13,68 @@ import style from "./PopupMarkupEditor.css";
 class PopupMarkupEditor extends Component {
     constructor(props) {
         super(props);
+        // this.state = {... this.props.element};
+        this.state = Object.assign({}, this.props.element);
     }
 
-    updateMarkup (markup) {
-		this.setState({
-            markup: markup
+    updateName (event) {
+        this.setState({
+            name: event.currentTarget.value
+        })
+    }
+
+    updateMarkup (event) {
+        this.setState({
+            markup: event.currentTarget.value
+        })
+    }
+
+    updateStyle (event) {
+        this.setState({
+            style: event.currentTarget.value
+        })
+    }
+
+    updateStyleClass (event) {
+        this.setState({
+            styleClass: event.currentTarget.value
+        })
+    }
+
+    updateState (event) {
+        this.setState({
+            state: event.currentTarget.value
+        })
+    }
+
+    publishElement () {
+        this.props.saveAndClose({
+            name: this.state.name,
+            markup: this.state.markup,
+            style: this.state.style,
+            styleClass: this.state.styleClass,
+            state: this.state.state
         });
     }
 
     render() {
 
-        // Have a practice of handling only negative case. means, if 4 variables are required, and used without if, add an if. universal law daw.
+        let element = this.state;
+        // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div draggable="true"  className={(this.props.show ? '' : style.hidden)+" resizable"} >
                 <section className={style.override}>
                     <h4>Name:</h4>
-                    <input type="text" placeholder="Enter element name" value={this.props.name} onChange={this.props.updateName}/>
-                    <button onClick={this.props.save}>Save</button>
-                    <button onClick={this.props.close}>Close</button>
+                    <input id="elementName" type="text" placeholder="Enter element name" value={element.name} onChange={this.updateName.bind(this)}/>
+                    <button id="saveAndClose" onClick={this.publishElement.bind(this)}>Save & close</button>
                     <h4>Markup:</h4>
-                    <textarea value={this.props.markup} onChange={this.props.updateMarkup} />
+                    <textarea id="elementMarkup" value={element.markup} onChange={this.updateMarkup.bind(this)} />
                     <h4>Style by class:</h4>
-                    <textarea value={this.props.styleClass} onChange={this.props.updateStyleClass} />
+                    <textarea id="elementStyleClass" value={element.styleClass} onChange={this.updateStyleClass.bind(this)} />
                     <h4>Style:</h4>
-                    <textarea value={this.props.style} onChange={this.props.updateStyle} />
+                    <textarea id="elementStyle" value={element.style} onChange={this.updateStyle.bind(this)} />
                     <h4>State:</h4>
-                    <textarea value={this.props.state} onChange={this.props.updateState} />
+                    <textarea id="elementState" value={element.state} onChange={this.updateState.bind(this)} />
                 </section>
             </div>
         );

@@ -16,60 +16,22 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            createMode : true,
-            show:true,
-            name: "",
-            markup:"",
-            styleClass: "",
-            style: "",
-            state: ""
+            element : {
+                name: "",
+                markup:"",
+                styleClass: "",
+                style: "",
+                state: ""
+            },
+            show:true
         }
     }
 
-    save (t) {
-        if(this.validation()){
-            this.close();
-        }
-    }
-
-    validation () {
-        return this.state.markup && this.state.name;
-    }
-
-    close () {
+    saveAndClose (element) {
+        console.log(element)
         this.setState({
             show:false
-        })
-    }
-
-    updateName (event) {
-        this.setState({
-            name: event.currentTarget.value
-        })
-    }
-
-    updateMarkup (event) {
-        this.setState({
-            markup: event.currentTarget.value
-        })
-    }
-
-    updateStyle (event) {
-        this.setState({
-            style: event.currentTarget.value
-        })
-    }
-
-    updateStyleClass (event) {
-        this.setState({
-            styleClass: event.currentTarget.value
-        })
-    }
-
-    updateState (event) {
-        this.setState({
-            state: event.currentTarget.value
-        })
+        });
     }
 
     render(){
@@ -77,18 +39,8 @@ class Index extends Component {
             <div className = {style.showBackground}>
                 <PopupMarkupEditor  
                     show = {this.state.show} 
-                    name = {this.state.name} 
-                    markup = {this.state.markup} 
-                    styleClass = {this.state.styleClass}
-                    style = {this.state.style}
-                    state = {this.state.state}
-                    save = {this.save.bind(this)} 
-                    close = {this.close.bind(this)}
-                    updateName = {this.updateName.bind(this)}
-                    updateMarkup = {this.updateMarkup.bind(this)}
-                    updateStyle = {this.updateStyle.bind(this)}
-                    updateStyleClass = {this.updateStyleClass.bind(this)}
-                    updateState = {this.updateState.bind(this)}
+                    element = {this.state.element}
+                    saveAndClose = {this.saveAndClose.bind(this)} 
                     />
             </div>
         );
