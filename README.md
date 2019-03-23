@@ -14,6 +14,8 @@ Dispatches
     dispatches element details on close
 
 
+
+
 Planned
     Adding new element property should result in less number of code change in future.
     Iterate through properties of element, create handlers for them, create input for them, it can take validators.

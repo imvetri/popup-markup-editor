@@ -13,13 +13,8 @@ import style from "./PopupMarkupEditor.css";
 class PopupMarkupEditor extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            name: "",
-            markup:"",
-            styleClass: "",
-            style: "",
-            state: ""
-        }
+        // this.state = {... this.props.element};
+        this.state = Object.assign({}, this.props.element);
     }
 
     updateName (event) {
@@ -64,21 +59,22 @@ class PopupMarkupEditor extends Component {
 
     render() {
 
+        let element = this.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div draggable="true"  className={(this.props.show ? '' : style.hidden)+" resizable"} >
                 <section className={style.override}>
                     <h4>Name:</h4>
-                    <input type="text" placeholder="Enter element name" value={this.props.name} onChange={this.updateName.bind(this)}/>
-                    <button onClick={this.publishElement.bind(this)}>Save & close</button>
+                    <input id="elementName" type="text" placeholder="Enter element name" value={element.name} onChange={this.updateName.bind(this)}/>
+                    <button id="saveAndClose" onClick={this.publishElement.bind(this)}>Save & close</button>
                     <h4>Markup:</h4>
-                    <textarea value={this.props.markup} onChange={this.updateMarkup.bind(this)} />
+                    <textarea id="elementMarkup" value={element.markup} onChange={this.updateMarkup.bind(this)} />
                     <h4>Style by class:</h4>
-                    <textarea value={this.props.styleClass} onChange={this.updateStyleClass.bind(this)} />
+                    <textarea id="elementStyleClass" value={element.styleClass} onChange={this.updateStyleClass.bind(this)} />
                     <h4>Style:</h4>
-                    <textarea value={this.props.style} onChange={this.updateStyle.bind(this)} />
+                    <textarea id="elementStyle" value={element.style} onChange={this.updateStyle.bind(this)} />
                     <h4>State:</h4>
-                    <textarea value={this.props.state} onChange={this.updateState.bind(this)} />
+                    <textarea id="elementState" value={element.state} onChange={this.updateState.bind(this)} />
                 </section>
             </div>
         );
